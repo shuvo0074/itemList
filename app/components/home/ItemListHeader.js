@@ -3,7 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import {assets} from '../../assets';
 import GlobalStyles from '../../style';
 
-export default function ItemListHeader({onPressRight, username}) {
+export default function ItemListHeader({onPressRight=()=>{}, username}) {
   return (
     <View style={styles.titleRow}>
       <View style={styles.headerPill}>

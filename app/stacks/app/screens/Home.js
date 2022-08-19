@@ -22,6 +22,7 @@ import ListItem from '../../../components/home/ListItem';
 import GlobalStyles from '../../../style';
 import {CATEGORY_LIST} from '../reducers';
 import SharedList from '../../../components/home/SharedList';
+import {PATHS} from '../../../const/paths';
 
 const {height} = Dimensions.get('screen');
 
@@ -36,7 +37,12 @@ const Result: () => Node = ({navigation}) => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={'dark-content'} />
-      <ItemListHeader username={user.title} />
+      <ItemListHeader
+        onPressRight={() => {
+          navigation.navigate(PATHS.AddProduct);
+        }}
+        username={user.title}
+      />
       <SharedList />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
