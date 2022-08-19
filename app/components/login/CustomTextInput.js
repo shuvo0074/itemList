@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
-import { assets } from '../../assets';
+import {assets} from '../../assets';
 
 export const INPUT_STATES = {
   BLURRED: 'BLURRED',
@@ -26,6 +26,7 @@ export default function CustomTextInput({
   checkValidity,
   title = '',
   placeholder = '',
+  secureTextEntry = false,
 }) {
   const [inputState, setInputState] = useState(INPUT_STATES.BLURRED);
   const [errorMessage, setErrorMessage] = useState('');
@@ -42,6 +43,7 @@ export default function CustomTextInput({
       {/* textinput container */}
       <View style={styles.textInpContainer(inputState)}>
         <TextInput
+          secureTextEntry={secureTextEntry}
           selectTextOnFocus
           placeholder={placeholder}
           autoFocus={autoFocus}
@@ -75,9 +77,7 @@ export default function CustomTextInput({
       {/* error container */}
       <View style={styles.errorCont}>
         {inputState === INPUT_STATES.ERROR ? (
-          <ImageBackground
-            style={styles.errorBG}
-            source={assets.login.errorBg}>
+          <ImageBackground style={styles.errorBG} source={assets.login.errorBg}>
             <Text style={styles.errorTxt}>{errorMessage}</Text>
           </ImageBackground>
         ) : null}
