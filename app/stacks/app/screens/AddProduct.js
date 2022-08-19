@@ -14,6 +14,7 @@ import {
   StyleSheet,
   useColorScheme,
   ImageBackground,
+  Text,
 } from 'react-native';
 
 import {useDispatch} from 'react-redux';
@@ -23,7 +24,8 @@ import SubmitButton from '../../../components/login/SubmitButton';
 import {PATHS} from '../../../const/paths';
 import {addProduct, checkValidityForInput} from '../actions/commonActions';
 import {assets} from '../../../assets';
-import {PRODUCT_OBJECT} from '../reducers';
+import {CATEGORY_LIST, PRODUCT_OBJECT} from '../reducers';
+import {Dropdown} from 'react-native-element-dropdown';
 
 const AddProduct: () => Node = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -32,6 +34,8 @@ const AddProduct: () => Node = ({navigation}) => {
   const [title, setTitle] = useState('');
   const [amount, setamount] = useState('');
   const [description, setdescription] = useState('');
+  const [category, setCategory] = useState(-1);
+  const [isFocus, setIsFocus] = useState(false);
 
   const backgroundStyle = {
     backgroundColor: '#0c1955',
@@ -67,24 +71,47 @@ const AddProduct: () => Node = ({navigation}) => {
             placeholder="Amount"
           />
         </View>
-        <CustomTextInput
-          value={description}
-          setValue={txt => setdescription(txt)}
-          checkValidity={checkValidityForInput}
-          customStyle={styles.textInputStyle}
-          title="Description"
-          placeholder="Description"
-        />
+        <View style={styles.flexRow}>
+          <CustomTextInput
+            value={description}
+            setValue={txt => setdescription(txt)}
+            checkValidity={checkValidityForInput}
+            customStyle={styles.textInputStyle}
+            title="Description"
+            halfLength
+            placeholder="Description"
+          />
+          <View>
+            <Text style={styles.titleTxt}>
+              Category <Text style={styles.titleRequiredMark}>*</Text>
+            </Text>
+            <Dropdown
+              value={category}
+              data={CATEGORY_LIST}
+              onChange={i => setCategory(i.id)}
+              labelField="value"
+              valueField="id"
+              style={styles.dropdown}
+              selectedTextStyle={styles.selectedTextStyle}
+              placeholderStyle={styles.selectedTextStyle}
+              iconStyle={styles.iconStyle}
+              placeholder={!isFocus ? 'Select item' : '...'}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+            />
+          </View>
+        </View>
 
         <SubmitButton
           title="Add product"
-          disabled={!title.length || !amount.length}
+          disabled={!title.length || !amount.length || category == -1}
           onPress={() => {
             const flagProduct = {...PRODUCT_OBJECT};
-            // get userinfo from API
+
             flagProduct.title = title;
             flagProduct.quantity = amount;
             flagProduct.description = description;
+            flagProduct.category = category;
 
             dispatch(addProduct(flagProduct));
             navigation.navigate(PATHS.Home);
@@ -96,6 +123,10 @@ const AddProduct: () => Node = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  titleRequiredMark: {
+    fontSize: 25,
+    color: 'red',
+  },
   bgImage: {
     height: GlobalStyles.DEVICE_HEIGHT,
   },
@@ -119,6 +150,28 @@ const styles = StyleSheet.create({
     marginTop: GlobalStyles.PADDING,
     textDecorationLine: 'underline',
     textDecorationColor: GlobalStyles.COLOR_SUBMIT,
+  },
+  titleTxt: {
+    fontSize: GlobalStyles.fs20,
+    color: GlobalStyles.COLOR_GREY,
+  },
+  dropdown: {
+    height: 50,
+    borderColor: '#3267F0',
+    borderWidth: 0.5,
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    width: GlobalStyles.DEVICE_WIDTH / 2 - 40,
+    height: 62,
+    marginTop: 10,
+  },
+  selectedTextStyle: {
+    fontSize: GlobalStyles.fs16,
+    color: GlobalStyles.COLOR_GREY,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
   },
 });
 

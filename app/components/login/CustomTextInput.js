@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {assets} from '../../assets';
+import GlobalStyles from '../../style';
 
 export const INPUT_STATES = {
   BLURRED: 'BLURRED',
@@ -106,11 +107,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   titleTxt: {
-    fontSize: 20,
-    color: 'grey',
+    fontSize: GlobalStyles.fs20,
+    color: GlobalStyles.COLOR_GREY,
   },
   titleRequiredMark: {
-    fontSize: 25,
+    fontSize: GlobalStyles.fs26,
     color: 'red',
   },
   textInpContainer: (inputState, halfLength) => ({
@@ -125,10 +126,10 @@ const styles = StyleSheet.create({
     height: 66,
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 12,
+    marginTop: GlobalStyles.PADDING / 2,
   }),
   textInput: halfLength => ({
-    backgroundColor: '#fff',
+    backgroundColor: GlobalStyles.COLOR_LIGHTEST,
     opacity: 0.25,
     width: halfLength ? width / 2 - 70 : width - 80,
     height: 64,
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 12,
     borderBottomRightRadius: 12,
     // backgroundColor: '#446374',
-    backgroundColor: '#fff',
+    backgroundColor: GlobalStyles.COLOR_LIGHTEST,
     opacity: 0.25,
     height: 64,
     justifyContent: 'center',
