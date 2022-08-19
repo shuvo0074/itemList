@@ -6,3 +6,9 @@ export const addProduct = item => {
     payload: item,
   };
 };
+
+export const checkValidityForInput = () => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve(), 1000);
+  });
+};
