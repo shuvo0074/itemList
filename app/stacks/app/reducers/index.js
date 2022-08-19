@@ -25,7 +25,7 @@ const INITIAL_STATE = {
       quantity: 9,
       description: 'Not important',
       category: 2,
-    }
+    },
   ],
 };
 
@@ -37,11 +37,11 @@ export const PRODUCT_OBJECT = {
 };
 
 export const CATEGORY_LIST = [
-  'Cofee, Tea',
-  'Dairy',
-  'Fruits',
-  'Personal care & Beauty',
-  'Pharmacy',
+  {id: 0, value: 'Cofee, Tea'},
+  {id: 1, value: 'Dairy'},
+  {id: 2, value: 'Fruits'},
+  {id: 3, value: 'Personal care & Beauty'},
+  {id: 4, value: 'Pharmacy'},
 ];
 
 export const commonReducer = (state = INITIAL_STATE, action) => {

@@ -49,7 +49,7 @@ const Result: () => Node = ({navigation}) => {
         style={backgroundStyle}
         contentContainerStyle={styles.scrollContainer}>
         {CATEGORY_LIST.map((category, index) => (
-          <ListItem item={category} index={index} key={index} />
+          <ListItem item={category.value} index={index} key={index} />
         ))}
       </ScrollView>
     </SafeAreaView>
