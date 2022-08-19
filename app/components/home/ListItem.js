@@ -20,8 +20,8 @@ export default function ListItem({item, index}) {
         </Text>
         {producList
           .filter(product => product.category == index)
-          .map(item => (
-            <View style={styles.product}>
+          .map((item,index) => (
+            <View key={index} style={styles.product}>
               <View style={styles.productHeader}>
                 <Text style={styles.itemName}>{item.title}</Text>
                 {item.quantity ? (
