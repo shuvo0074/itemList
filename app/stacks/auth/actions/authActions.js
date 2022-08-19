@@ -20,6 +20,9 @@ export const syncUserFromStorage = navigation => dispatch => {
     if (user) {
       dispatch(login(JSON.parse(user)));
       navigation.navigate(PATHS.AppStack);
-    } else navigation.navigate(PATHS.AuthStack);
+    } else
+      setTimeout(() => {
+        navigation.navigate(PATHS.AuthStack);
+      }, 2000);
   });
 };
