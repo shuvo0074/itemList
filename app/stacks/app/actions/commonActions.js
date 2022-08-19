@@ -1,6 +1,8 @@
+import {TYPES} from '../../../const/types';
+
 export const addProduct = item => {
   return {
-    type: 'ADD_PRODUCT',
+    type: TYPES.HOME.ADD_PRODUCT,
     payload: item,
   };
 };

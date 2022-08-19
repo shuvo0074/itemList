@@ -1,3 +1,5 @@
+import {TYPES} from '../../../const/types';
+
 const INITIAL_STATE = {
   user: INITIAL_USER,
   is_loggedin: false,
@@ -12,8 +14,7 @@ export const INITIAL_USER = {
 
 export const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-
-    case 'LOGIN': {
+    case TYPES.LOGIN.LOGIN: {
       return {
         ...state,
         is_loggedin: true,
@@ -21,7 +22,7 @@ export const authReducer = (state = INITIAL_STATE, action) => {
       };
     }
 
-    case 'LOGOUT': {
+    case TYPES.LOGIN.LOGOUT: {
       return {
         ...state,
         is_loggedin: false,

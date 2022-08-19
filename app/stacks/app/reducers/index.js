@@ -1,3 +1,5 @@
+import {TYPES} from '../../../const/types';
+
 const INITIAL_STATE = {
   producList: [],
 };
@@ -19,7 +21,7 @@ export const CATEGORY_LIST = [
 
 export const commonReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'ADD_PRODUCT': {
+    case TYPES.HOME.ADD_PRODUCT: {
       return {
         ...state,
         producList: [...state.producList, action.payload],

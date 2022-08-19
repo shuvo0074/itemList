@@ -1,17 +1,18 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import {STORE_ITEMS} from '../../../const/AsyncStorageItems';
 import {PATHS} from '../../../const/paths';
+import {TYPES} from '../../../const/types';
 
 export const login = user => {
   return {
-    type: 'LOGIN',
+    type: TYPES.LOGIN.LOGIN,
     payload: user,
   };
 };
 
 export const logout = _ => {
   return {
-    type: 'LOGOUT',
+    type: TYPES.LOGIN.LOGOUT,
   };
 };
 
