@@ -16,16 +16,18 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import ItemListHeader from '../../../components/home/ItemListHeader';
 import ListItem from '../../../components/home/ListItem';
 import GlobalStyles from '../../../style';
 import {CATEGORY_LIST} from '../reducers';
+import SharedList from '../../../components/home/SharedList';
 
 const {height} = Dimensions.get('screen');
 
 const Result: () => Node = ({navigation}) => {
   const dispatch = useDispatch();
+  const {user} = useSelector(state => state.auth);
 
   const backgroundStyle = {
     backgroundColor: GlobalStyles.COLOR_HOME,
@@ -34,7 +36,8 @@ const Result: () => Node = ({navigation}) => {
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={'dark-content'} />
-      <ItemListHeader username={'Shuvo'} />
+      <ItemListHeader username={user.title} />
+      <SharedList />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}
