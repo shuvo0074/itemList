@@ -27,6 +27,7 @@ export default function CustomTextInput({
   title = '',
   placeholder = '',
   secureTextEntry = false,
+  halfLength = false,
 }) {
   const [inputState, setInputState] = useState(INPUT_STATES.BLURRED);
   const [errorMessage, setErrorMessage] = useState('');
@@ -41,7 +42,7 @@ export default function CustomTextInput({
       </Text>
 
       {/* textinput container */}
-      <View style={styles.textInpContainer(inputState)}>
+      <View style={styles.textInpContainer(inputState, halfLength)}>
         <TextInput
           secureTextEntry={secureTextEntry}
           selectTextOnFocus
@@ -63,7 +64,7 @@ export default function CustomTextInput({
             }
           }}
           onChangeText={setValue}
-          style={styles.textInput}
+          style={styles.textInput(halfLength)}
         />
 
         {/* container for tick icon if input is ACCEPTED */}
@@ -112,13 +113,13 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: 'red',
   },
-  textInpContainer: inputState => ({
+  textInpContainer: (inputState, halfLength) => ({
     borderWidth:
       inputState === INPUT_STATES.ERROR || inputState === INPUT_STATES.FOCUSED
         ? 1
         : 0,
     borderColor: inputState === INPUT_STATES.ERROR ? '#FF0000' : '#3267F0',
-    width: width - 50,
+    width: halfLength ? width / 2 - 40 : width - 50,
     alignSelf: 'center',
     borderRadius: 12,
     height: 66,
@@ -126,16 +127,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 12,
   }),
-  textInput: {
+  textInput: halfLength => ({
     backgroundColor: '#fff',
     opacity: 0.25,
-    width: width - 80,
+    width: halfLength ? width / 2 - 70 : width - 80,
     height: 64,
     paddingLeft: 25,
     color: 'black',
     borderTopLeftRadius: 12,
     borderBottomLeftRadius: 12,
-  },
+  }),
   rightIconContainer: {
     width: 30,
     borderTopRightRadius: 12,

@@ -28,7 +28,7 @@ import {assets} from '../../../assets';
 import {login} from '../actions/authActions';
 import {INITIAL_USER} from '../reducers';
 
-const Search: () => Node = ({navigation}) => {
+const Login: () => Node = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
   const dispatch = useDispatch();
 
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: GlobalStyles.PADDING,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: GlobalStyles.DEVICE_HEIGHT / 8,
+    paddingTop: GlobalStyles.DEVICE_HEIGHT / 10,
   },
   textInputStyle: {
     marginBottom: GlobalStyles.PADDING,
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Search;
+export default Login;
