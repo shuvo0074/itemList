@@ -69,6 +69,7 @@ const colors = {
   COLOR_GREY_DISABLE: '#a1a1a1',
   COLOR_SUBMIT: '#9A41EA',
   COLOR_GREY_ACCENT: '#838383',
+  COLOR_HOME: '#040C28',
 };
 
 const DarkStyles = {
