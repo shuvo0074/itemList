@@ -8,7 +8,7 @@ const DimentionObj = {
   DEVICE_HEIGHT: y,
   FULL_WIDTH: Dimensions.get('screen').width,
   FULL_HEIGHT: Dimensions.get('screen').height,
-  PADDING: 20,
+  PADDING: 25,
   RADIUS: 10,
 };
 
