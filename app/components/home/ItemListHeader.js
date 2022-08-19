@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#373d53',
-    paddingBottom: GlobalStyles.PADDING,
+    paddingBottom: GlobalStyles.PADDING / 2,
     marginTop: GlobalStyles.PADDING,
     justifyContent: 'space-evenly',
   },
