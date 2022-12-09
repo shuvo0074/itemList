@@ -1,4 +1,5 @@
 {
   "name": "itemlist",
-  "displayName": "itemlist"
+  "displayName": "itemlist",
+  "hasDrawer": true
 }

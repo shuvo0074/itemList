@@ -1,17 +1,24 @@
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import Home from './screens/Home';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { hasDrawer } from '../../../app.json';
 
-const Stack = createStackNavigator();
+const Nav = hasDrawer ? createDrawerNavigator() : createStackNavigator();
 
 const AppStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen
+  <Nav.Navigator>
+    <Nav.Screen
       name="Home"
       component={Home}
-      options={{title: '', headerShown: false}}
+      options={{ title: 'Home', headerShown: false }}
     />
-  </Stack.Navigator>
+    <Nav.Screen
+      name="Profile"
+      component={Home}
+      options={{ title: 'Profile', headerShown: false }}
+    />
+  </Nav.Navigator>
 );
 
 export default AppStack;
